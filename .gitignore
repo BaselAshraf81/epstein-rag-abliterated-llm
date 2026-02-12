@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Logs and Analytics
+*.log
+*.jsonl
+notebooks/user_queries_log.jsonl
+notebooks/analytics_report.md
+notebooks/analyze_queries.py
+logs/
+# Model files (too large for git)
+*.gguf
+*.bin
+*.safetensors
+models/
+
+# Index files (too large for git)
+*.faiss
+*.pkl
+*.index
+epstein_index*/
+*_index/
+
+# Google Drive
+drive/
+MyDrive/
+
+# Environment variables
+.env
+.env.local
+*.secret
+
+# ngrok
+ngrok.yml
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# OS
+Thumbs.db
+.DS_Store

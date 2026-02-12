@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "notebook_mcp": {
+      "url": "http://127.0.0.1:8080/mcp",
+      "disabledTools": [],
+      "autoApprove": [
+        "notebook_get_outline",
+        "notebook_get_info",
+        "notebook_read",
+        "notebook_search",
+        "notebook_read_cell",
+        "notebook_add_cell",
+        "notebook_edit_cell",
+        "notebook_validate",
+        "notebook_get_server_path_context",
+        "notebook_delete_cell",
+        "notebook_get_cell_count"
+      ]
+    }
+  }
+}

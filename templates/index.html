@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epstein Documents RAG - AI Legal Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar-left">
+            <div class="branding">
+                <div class="brand-icon">⚖️</div>
+                <div class="brand-title">Epstein Docs</div>
+                <div class="brand-subtitle">AI Legal Analysis</div>
+            </div>
+
+            <div class="status-card" id="status">Ready</div>
+
+            <div class="metric-card">
+                <div class="metric-value" id="response-time">0.00s</div>
+                <div class="metric-label">Response Time</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-value" id="queue-count">0</div>
+                <div class="metric-label">Active Requests</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">📊 Database</div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <span>Documents:</span>
+                        <strong>25,303</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Architecture:</span>
+                        <strong>RAG</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Model:</span>
+                        <strong>AI</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-card">
+                <div class="warning-content">
+                    ⚠️ <strong>Colab Free Tier</strong><br>
+                    <span>May disconnect after 90 mins</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header class="hero-header">
+                <div class="hero-title">⚖️ Epstein Documents RAG</div>
+                <div class="hero-subtitle">Trained on 25,303 legal documents • Completely uncensored AI</div>
+            </header>
+
+            <!-- PERSISTENT WARNING BANNER -->
+            <div class="persistent-warning-banner">
+                <div class="warning-item flash">
+                    ⚠️ <strong>NO MEMORY:</strong> This AI has no memory between queries. Each question is treated independently - provide full context in every message.
+                </div>
+                <div class="warning-item">
+                    ⏳ <strong>FREE TIER:</strong> This runs on Colab's free tier, be patient with response times.
+                </div>
+                <div class="warning-item">
+                    🔄 <strong>HALLUCINATION WARNING:</strong> The AI might enter an infinite loop and hallucinate occasionally. If this happens, resend your question with more detail. This occurs because the AI is uncensored (Alliterated).
+                </div>
+            </div>
+
+            <div class="chatbot" id="chatbot">
+                <div class="welcome-message">
+                    <div class="welcome-icon">🤖</div>
+                    <h2>Welcome to Epstein Documents RAG</h2>
+                    <p>Ask me anything about the documents. I'm here to help you analyze and understand the legal content.</p>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+                <textarea 
+                    id="message-input" 
+                    placeholder="Ask anything about the documents..."
+                    rows="2"
+                    maxlength="500"
+                ></textarea>
+                <button id="send-btn" class="send-btn">Send</button>
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right">
+            <div class="settings-title">⚙️ Settings</div>
+
+            <label class="checkbox-item">
+                <input type="checkbox" id="show-sources">
+                <span>📚 Show Citations</span>
+            </label>
+
+            <label class="checkbox-item">
+                <input type="checkbox" id="show-thinking">
+                <span>💭 Show Reasoning</span>
+            </label>
+
+            <label class="checkbox-item">
+                <input type="checkbox" id="debug">
+                <span>🔧 Debug Mode</span>
+            </label>
+
+            <div class="slider-section">
+                <div class="slider-title">📊 Retrieval</div>
+                <label class="slider-label">
+                    Documents to Retrieve
+                    <span id="top-k-value">5</span>
+                </label>
+                <input type="range" id="top-k" min="1" max="7" value="5" step="1">
+                <div class="slider-info">Number of source documents (1-7)</div>
+            </div>
+
+            <div class="footer-info">
+                <p>Source: House Oversight Committee</p>
+                <p>Created by <a href="https://github.com/BaselAshraf81" target="_blank">BaselAshraf81</a></p>
+            </div>
+        </aside>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -13,6 +13,12 @@ A production-grade Retrieval-Augmented Generation (RAG) system for searching and
 
 > **⚠️ Abliterated Model Notice**: This system uses a fully uncensored, abliterated LLM with all safety guardrails removed. Extensive parameter tuning and optimization (hours of testing) were required to prevent hallucinations, infinite loops, and response degradation while maintaining factual accuracy.
 
+## 🌐 Live Demo
+
+**Try it here:** [https://florentina-nonexternalized-marketta.ngrok-free.dev/](https://florentina-nonexternalized-marketta.ngrok-free.dev/)
+
+> **Note**: The live demo is only available when I'm actively running the Colab notebook. If the link doesn't work, the system is currently offline. You can run your own instance by following the [Quick Start](#-quick-start) guide below.
+
 ## 📊 System Performance
 
 - **372 queries** served in 18.5 hours

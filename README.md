@@ -5,6 +5,10 @@
 [![Flask](https://img.shields.io/badge/Flask-3.0+-red.svg)](https://flask.palletsprojects.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+<p align="center">
+  <img src="assets/preview.png" alt="Epstein Documents RAG Interface" width="100%">
+</p>
+
 A production-grade Retrieval-Augmented Generation (RAG) system for searching and analyzing 25,303 legal documents from the Jeffrey Epstein House Oversight Committee investigation. Built with LlamaIndex, an abliterated Mistral-Nemo-12B model, and hybrid search architecture.
 
 > **⚠️ Abliterated Model Notice**: This system uses a fully uncensored, abliterated LLM with all safety guardrails removed. Extensive parameter tuning and optimization (hours of testing) were required to prevent hallucinations, infinite loops, and response degradation while maintaining factual accuracy.

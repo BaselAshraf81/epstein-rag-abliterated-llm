@@ -19,6 +19,39 @@ A production-grade Retrieval-Augmented Generation (RAG) system for searching and
 
 > **Note**: The live demo is only available when I'm actively running the Colab notebook. If the link doesn't work, the system is currently offline. You can run your own instance by following the [Quick Start](#-quick-start) guide below.
 
+---
+
+## ⚠️ Prerequisites for Running Locally
+
+This system requires pre-built index files and the model that are **not included in this repository** due to their size:
+
+### Required Files (Request Access):
+
+1. **Index & Pickle Cache** (~2GB): [Request Access Here](https://drive.google.com/drive/folders/1GnC68sqD-wyQQalSGgne61dyczQr5Qsx?usp=sharing)
+   - Contains: `epstein_index_full/` folder with FAISS index and pickle cache
+   
+2. **GGUF Model** (~7.6GB): [Request Access Here](https://drive.google.com/drive/folders/1tgJ3m3P_D3229k_hyohVNh_4f8gfOOhP?usp=sharing)
+   - Contains: `Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus-Q4_K_M.gguf`
+
+### Setup Instructions:
+
+1. Request access to both Google Drive folders above
+2. In your Google Drive, create shortcuts to these folders
+3. Place shortcuts at: `MyDrive/Colab_Notebooks/`
+4. Your structure should match:
+   ```
+   MyDrive/
+   └── Colab_Notebooks/
+       ├── epstein_index_full/
+       │   ├── epstein_index.pkl
+       │   ├── docstore.json
+       │   └── ... (other index files)
+       └── models/
+           └── Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus-Q4_K_M.gguf
+   ```
+
+> **Why not included?** The index files (~2GB) and model (~7.6GB) are too large for GitHub. The pickle cache significantly speeds up loading (5s vs 30s).
+
 ## 📊 System Performance
 
 - **372 queries** served in 18.5 hours
@@ -143,15 +176,21 @@ python --version
 # CUDA 12.4+ (for GPU acceleration)
 nvidia-smi
 
-# Google Colab (recommended) or local GPU
+# Google Colab (recommended) or local GPU with 15GB+ VRAM
 ```
+
+**IMPORTANT**: Before proceeding, you must have access to the required files:
+- ✅ [Index & Pickle Cache](https://drive.google.com/drive/folders/1GnC68sqD-wyQQalSGgne61dyczQr5Qsx?usp=sharing) (~2GB)
+- ✅ [GGUF Model](https://drive.google.com/drive/folders/1tgJ3m3P_D3229k_hyohVNh_4f8gfOOhP?usp=sharing) (~7.6GB)
+
+See [Prerequisites for Running Locally](#️-prerequisites-for-running-locally) for setup instructions.
 
 ### Installation
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/epstein-rag-system.git
-cd epstein-rag-system
+git clone https://github.com/BaselAshraf81/epstein-rag-abliterated-llm.git
+cd epstein-rag-abliterated-llm
 
 # Install dependencies
 pip install -r requirements.txt
@@ -170,8 +209,9 @@ from google.colab import drive
 drive.mount('/content/drive')
 ```
 
-2. **Set paths** in notebook:
+2. **Verify paths match your Drive structure**:
 ```python
+# These paths should point to where you created shortcuts
 DRIVE_INDEX_PATH = "/content/drive/MyDrive/Colab_Notebooks/epstein_index_full"
 MODEL_PATH = "/content/drive/MyDrive/Colab_Notebooks/models/Mistral-Nemo-*.gguf"
 LOG_DIR = "/content/drive/MyDrive/Colab_Notebooks/logs"
@@ -180,21 +220,21 @@ LOG_DIR = "/content/drive/MyDrive/Colab_Notebooks/logs"
 3. **Configure ngrok** (for public access):
 ```python
 NGROK_AUTH_TOKEN = "your_token_here"
-STATIC_DOMAIN = "your-domain.ngrok-free.dev"
+STATIC_DOMAIN = "your-domain.ngrok-free.dev"  # Optional
 ```
 
 ### Running the System
 
 ```python
-# Open Epstein_RAG_Prototype.ipynb in Colab
+# Open notebooks/Epstein_RAG_Prototype.ipynb in Colab
 # Run cells in order:
 
 # 1. Install dependencies
 # 2. Restart runtime (ONCE)
-# 3. Run main script (loads everything)
-# 4. Start Flask server
+# 3. Run main script (loads index, model, and starts Flask)
+# 4. Access via ngrok URL
 
-# Access at: https://your-domain.ngrok-free.dev
+# The system will be available at your ngrok URL
 ```
 
 ---
@@ -480,6 +520,18 @@ Generates:
 ---
 
 ## 🐛 Troubleshooting
+
+### Missing Index or Model Files
+
+```
+Error: FileNotFoundError: [Errno 2] No such file or directory: '/content/drive/MyDrive/...'
+```
+
+**Solution**: You need to request access to the required files:
+1. [Index & Pickle Cache](https://drive.google.com/drive/folders/1GnC68sqD-wyQQalSGgne61dyczQr5Qsx?usp=sharing)
+2. [GGUF Model](https://drive.google.com/drive/folders/1tgJ3m3P_D3229k_hyohVNh_4f8gfOOhP?usp=sharing)
+
+Create shortcuts in your Google Drive at `MyDrive/Colab_Notebooks/` to match the paths in the notebook.
 
 ### GPU Out of Memory
 
